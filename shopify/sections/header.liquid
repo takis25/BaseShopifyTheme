@@ -1,36 +1,37 @@
-<div class="container">
-  <a href="{{ routes.root_url }}">
-    Logo
-  </a>
+<header style="background: #f4f4f4; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;">
+  <div class="site-logo">
+    <a href="/" class="site-logo" style="text-decoration: none;">
+  {% if section.settings.logo != blank %}
+    <img src="{{ section.settings.logo | image_url: width: 150 }}" alt="{{ shop.name }}" style="height: 50px;">
+  {% else %}
+    <span style="font-weight: bold; font-size: 1.2rem;">{{ shop.name }}</span>
+  {% endif %}
+</a>
 
-  {% render 'layout-menu' %}
-
-  <div>
-    {% if shop.customer_accounts_enabled %}
-      {% if customer %}
-        <a href="{{ routes.account_url }}">
-          {{ 'action.account' | t }}
-        </a>
-        {{ 'action.log_out' | t | customer_logout_link }}
-      {% else %}
-        {{ 'action.log_in' | t | customer_login_link }}
-        {{ 'action.register' | t | customer_register_link }}
-      {% endif %}
-    {% endif %}
-
-    <a href="{{ routes.cart_url }}">
-      {{ 'action.cart' | t }}
-    </a>
   </div>
-</div>
+  <nav>
+    <ul style="list-style: none; margin: 0; padding: 0; display: flex; gap: 1rem;">
+      <li><a href="/">Home</a></li>
+      <li><a href="/collections/all">Catalog</a></li>
+      <li><a href="/pages/contact">Contact</a></li>
+      <li><a href="/cart">Cart</a></li>
+    </ul>
+  </nav>
+</header>
 
 {% schema %}
 {
-  "name": "t:sections.header.name",
+  "name": "Header",
   "settings": [
     {
-      "type": "paragraph",
-      "content": "t:sections.header.settings.paragraph"
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Header"
     }
   ]
 }

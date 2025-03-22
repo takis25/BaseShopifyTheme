@@ -1,14 +1,8 @@
 {
   "sections": {
-    "vue-examples": {
-      "type": "vue-examples"
-    },
-    "main": {
-      "type": "main-index"
+    "hero": {
+      "type": "hero"
     }
   },
-  "order": [
-    "vue-examples",
-    "main"
-  ]
+  "order": ["hero"]
 }
