@@ -12,7 +12,7 @@
     "settings": [
       {
         "type": "color",
-        "id": "primary_color",
+        "id": "color_primary",
         "label": "Primary Theme Color",
         "default": "#007aff"
       },
