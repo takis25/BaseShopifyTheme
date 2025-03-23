@@ -1,23 +1,23 @@
-<header style="background: #f4f4f4; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;">
-  <div class="site-logo">
-    <a href="/" class="site-logo" style="text-decoration: none;">
-  {% if section.settings.logo != blank %}
-    <img src="{{ section.settings.logo | image_url: width: 150 }}" alt="{{ shop.name }}" style="height: 50px;">
-  {% else %}
-    <span style="font-weight: bold; font-size: 1.2rem;">{{ shop.name }}</span>
-  {% endif %}
-</a>
-
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="site-logo">
+      {% if section.settings.logo != blank %}
+        <img src="{{ section.settings.logo | image_url: width: 150 }}" alt="{{ shop.name }}">
+      {% else %}
+        <span>{{ shop.name }}</span>
+      {% endif %}
+    </a>
+    <nav class="site-nav">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/collections/all">Catalog</a></li>
+        <li><a href="/pages/contact">Contact</a></li>
+        <li><a href="/cart">Cart</a></li>
+      </ul>
+    </nav>
   </div>
-  <nav>
-    <ul style="list-style: none; margin: 0; padding: 0; display: flex; gap: 1rem;">
-      <li><a href="/">Home</a></li>
-      <li><a href="/collections/all">Catalog</a></li>
-      <li><a href="/pages/contact">Contact</a></li>
-      <li><a href="/cart">Cart</a></li>
-    </ul>
-  </nav>
 </header>
+
 
 {% schema %}
 {

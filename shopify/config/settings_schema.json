@@ -11,6 +11,12 @@
     "name": "t:settings_schema.custom_settings.name",
     "settings": [
       {
+        "type": "color",
+        "id": "primary_color",
+        "label": "Primary Theme Color",
+        "default": "#007aff"
+      },
+      {      
         "type": "header",
         "content": "t:settings_schema.custom_settings.settings.header"
       },

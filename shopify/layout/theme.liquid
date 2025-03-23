@@ -23,6 +23,14 @@
 
     {{ 'bundle.css' | asset_url | stylesheet_tag }}
 
+    <!-- Inject theme color -->
+    <style>
+      :root {
+        --color-primary: {{ settings.color_primary }};
+
+      }
+    </style>
+
     <!-- header hook for Shopify plugins -->
     {{ content_for_header }}
   </head>
