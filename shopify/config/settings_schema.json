@@ -37,4 +37,76 @@
       }
     ]
   }
+  ,
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "text",
+        "id": "footer_column1_title",
+        "label": "First column title",
+        "default": "About Us"
+      },
+      {
+        "type": "richtext",
+        "id": "footer_column1_text",
+        "label": "First column content"
+      },
+      {
+        "type": "text",
+        "id": "footer_column2_title",
+        "label": "Second column title",
+        "default": "Explore"
+      },
+      {
+        "type": "link_list",
+        "id": "footer_column2_menu",
+        "label": "Second column menu"
+      },
+      {
+        "type": "text",
+        "id": "footer_column3_title",
+        "label": "Third column title",
+        "default": "Information"
+      },
+      {
+        "type": "link_list",
+        "id": "footer_column3_menu",
+        "label": "Third column menu"
+      },
+      {
+        "type": "text",
+        "id": "footer_column4_title",
+        "label": "Fourth column title",
+        "default": "Follow Us"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_social_icons",
+        "label": "Show social icons",
+        "default": true
+      },
+      {
+        "type": "url",
+        "id": "social_facebook",
+        "label": "Facebook URL"
+      },
+      {
+        "type": "url",
+        "id": "social_instagram",
+        "label": "Instagram URL"
+      },
+      {
+        "type": "url",
+        "id": "social_twitter",
+        "label": "Twitter URL"
+      },
+      {
+        "type": "url",
+        "id": "social_youtube",
+        "label": "YouTube URL"
+      }
+    ]
+  }
+  
 ]

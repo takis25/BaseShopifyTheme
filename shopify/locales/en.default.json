@@ -9,5 +9,9 @@
   "404": {
     "title": "404 Page Not Found",
     "text": "The page you requested does not exist."
+  },
+  "footer": {
+    "column1_title": "About Us",
+    "rights": "All rights reserved."
   }
 }
