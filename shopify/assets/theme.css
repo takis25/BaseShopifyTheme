@@ -83,7 +83,7 @@ section {
   background-color: #f5f5f5;
   padding: 2rem 1rem;
   font-size: 14px;
-  color: var(--color-text, #333);
+  color: var(--footer-text-color, #333);
 }
 
 .footer__grid {
@@ -94,6 +94,18 @@ section {
   max-width: 1200px;
   margin: 0 auto;
 }
+
+.footer__grid--columns-1,
+.footer__grid--columns-2 {
+  justify-content: center;
+}
+
+.footer__column {
+  flex: 1 1 0;
+  min-width: 160px;
+  max-width: 220px;
+}
+
 
 .footer__column h3 {
   font-size: 16px;
@@ -113,7 +125,7 @@ section {
 }
 
 .footer__column ul li a {
-  color: inherit;
+  color: var(--footer-text-color, #333);
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -128,16 +140,32 @@ section {
 
 .footer__social-icons {
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  gap: 12px;
   margin-top: 10px;
-  flex-wrap: wrap;
+}
+
+.footer__social-icons li {
+  list-style: none;
 }
 
 .footer__social-icons a {
-  color: var(--color-primary, #007aff);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--footer-social-icon-color, #333) !important;
   text-decoration: none;
-  font-weight: bold;
-  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.footer__social-icons a:hover {
+  color: var(--color-primary, #007aff) !important;
+}
+
+.footer__social-icons i,
+.footer__social-icons svg {
+  font-size: 16px;
+  fill: currentColor;
 }
 
 .footer__bottom {
@@ -148,28 +176,6 @@ section {
   border-top: 1px solid #ddd;
   margin-top: 30px;
 }
-/* Social Icon Styling (SVGs) */
-.footer__social-icons svg {
-  width: 20px;
-  height: 20px;
-  fill: var(--color-primary, #007aff);
-  transition: fill 0.2s ease;
-}
-
-.footer__social-icons li {
-  list-style: none;
-}
-
-.footer__social-icons a:hover svg {
-  fill: #333;
-}
-
-/* Optional: Add spacing between links and fix alignment */
-.footer__social-icons li a {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
 
 /* Responsive Footer Adjustments */
 @media (max-width: 768px) {
@@ -178,19 +184,16 @@ section {
   }
 
   .footer__grid {
+    flex-direction: column;
+    align-items: flex-start;
     gap: 20px;
   }
-  @media (max-width: 768px) {
-    .footer__grid {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .footer__column {
-      width: 100%;
-    }
+
+  .footer__column {
+    width: 100%;
+    max-width: 100%;
   }
-  
+
   .footer__bottom {
     font-size: 12px;
     padding-top: 20px;

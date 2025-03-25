@@ -16,7 +16,7 @@
         "label": "Primary Theme Color",
         "default": "#007aff"
       },
-      {      
+      {
         "type": "header",
         "content": "t:settings_schema.custom_settings.settings.header"
       },
@@ -36,8 +36,7 @@
         "info": "t:settings_schema.favicon.settings.info"
       }
     ]
-  }
-  ,
+  },
   {
     "name": "Footer",
     "settings": [
@@ -78,6 +77,17 @@
         "type": "text",
         "id": "footer_column4_title",
         "label": "Fourth column title",
+        "default": "More"
+      },
+      {
+        "type": "link_list",
+        "id": "footer_column4_menu",
+        "label": "Fourth column menu"
+      },
+      {
+        "type": "text",
+        "id": "footer_column5_title",
+        "label": "Fifth column title",
         "default": "Follow Us"
       },
       {
@@ -85,6 +95,18 @@
         "id": "show_social_icons",
         "label": "Show social icons",
         "default": true
+      },
+      {
+        "type": "color",
+        "id": "footer_text_color",
+        "label": "Footer text color",
+        "default": "#333333"
+      },
+      {
+        "type": "color",
+        "id": "footer_social_icon_color",
+        "label": "Social icon color",
+        "default": "#333333"
       },
       {
         "type": "url",
@@ -105,8 +127,17 @@
         "type": "url",
         "id": "social_youtube",
         "label": "YouTube URL"
+      },
+      {
+        "type": "url",
+        "id": "social_pinterest",
+        "label": "Pinterest URL"
+      },
+      {
+        "type": "url",
+        "id": "social_tiktok",
+        "label": "TikTok URL"
       }
     ]
   }
-  
 ]

@@ -1,10 +1,27 @@
+<style>
+  :root {
+    --footer-text-color: {{ section.settings.footer_text_color }};
+    --footer-social-icon-color: {{ section.settings.footer_social_icon_color }};
+  }
+</style>
+
+{% assign active_columns = 0 %}
+{% if section.settings.show_column1 %}{% assign active_columns = active_columns | plus: 1 %}{% endif %}
+{% if section.settings.show_column2 %}{% assign active_columns = active_columns | plus: 1 %}{% endif %}
+{% if section.settings.show_column3 %}{% assign active_columns = active_columns | plus: 1 %}{% endif %}
+{% if section.settings.show_column4 %}{% assign active_columns = active_columns | plus: 1 %}{% endif %}
+{% if section.settings.show_column5 %}{% assign active_columns = active_columns | plus: 1 %}{% endif %}
+
 <footer class="footer">
-  <div class="footer__grid">
+  <div class="footer__grid footer__grid--columns-{{ active_columns }}">
+    {% if section.settings.show_column1 %}
     <div class="footer__column">
       <h3>{{ section.settings.footer_column1_title }}</h3>
-      <div class="rte">{{ section.settings.footer_column1_content }}</div>
+      <div class="rte" style="max-width: 250px; word-wrap: break-word;">{{ section.settings.footer_column1_content }}</div>
     </div>
+    {% endif %}
 
+    {% if section.settings.show_column2 %}
     <div class="footer__column">
       <h3>{{ section.settings.footer_column2_title }}</h3>
       {% if section.settings.footer_column2_menu != blank %}
@@ -15,7 +32,9 @@
         </ul>
       {% endif %}
     </div>
+    {% endif %}
 
+    {% if section.settings.show_column3 %}
     <div class="footer__column">
       <h3>{{ section.settings.footer_column3_title }}</h3>
       {% if section.settings.footer_column3_menu != blank %}
@@ -26,51 +45,60 @@
         </ul>
       {% endif %}
     </div>
+    {% endif %}
 
+    {% if section.settings.show_column4 %}
     <div class="footer__column">
       <h3>{{ section.settings.footer_column4_title }}</h3>
-      {% if section.settings.show_social_icons %}
-        <ul class="footer__social-icons">
-  {% if section.settings.social_facebook %}
-    <li>
-      <a href="{{ section.settings.social_facebook }}" target="_blank" rel="noopener" aria-label="Facebook">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M22 12a10 10 0 10-11.6 9.87v-6.99H8.9V12h1.5v-1.6c0-1.48.88-2.3 2.23-2.3.64 0 1.32.11 1.32.11v1.45h-.74c-.73 0-.96.45-.96.91V12h1.63l-.26 2.88h-1.37v6.99A10 10 0 0022 12z"/>
-        </svg>
-      </a>
-    </li>
-  {% endif %}
-  {% if section.settings.social_instagram %}
-    <li>
-      <a href="{{ section.settings.social_instagram }}" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5a4.25 4.25 0 004.25-4.25v-8.5A4.25 4.25 0 0016.25 3.5h-8.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 1.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7zm5.25-.88a1.13 1.13 0 110 2.25 1.13 1.13 0 010-2.25z"/>
-        </svg>
-      </a>
-    </li>
-  {% endif %}
-  {% if section.settings.social_twitter %}
-    <li>
-      <a href="{{ section.settings.social_twitter }}" target="_blank" rel="noopener" aria-label="Twitter">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M22.46 6c-.77.35-1.6.58-2.46.69a4.24 4.24 0 001.86-2.34 8.51 8.51 0 01-2.7 1.03 4.24 4.24 0 00-7.22 3.87A12 12 0 013 5.1a4.25 4.25 0 001.31 5.67 4.25 4.25 0 01-1.92-.53v.05a4.25 4.25 0 003.4 4.17 4.3 4.3 0 01-1.91.07 4.26 4.26 0 003.97 2.95A8.53 8.53 0 013 19.54a12 12 0 006.29 1.84c7.55 0 11.69-6.26 11.69-11.69 0-.18 0-.36-.01-.54A8.36 8.36 0 0022.46 6z"/>
-        </svg>
-      </a>
-    </li>
-  {% endif %}
-  {% if section.settings.social_youtube %}
-    <li>
-      <a href="{{ section.settings.social_youtube }}" target="_blank" rel="noopener" aria-label="YouTube">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M10 15l5.19-3L10 9v6zm12-3c0-2.21-.18-4.39-.53-6.55a2.99 2.99 0 00-2.11-2.11C17.2 3.18 12 3 12 3s-5.2.18-7.36.34a2.99 2.99 0 00-2.11 2.11C2.18 6.61 2 8.79 2 11s.18 4.39.53 6.55a2.99 2.99 0 002.11 2.11C6.8 20.82 12 21 12 21s5.2-.18 7.36-.34a2.99 2.99 0 002.11-2.11c.35-2.16.53-4.34.53-6.55z"/>
-        </svg>
-      </a>
-    </li>
-  {% endif %}
-</ul>
-
+      {% if section.settings.footer_column4_menu != blank %}
+        <ul>
+          {% for link in linklists[section.settings.footer_column4_menu].links %}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {% endfor %}
+        </ul>
       {% endif %}
     </div>
+    {% endif %}
+
+    {% if section.settings.show_column5 %}
+    <div class="footer__column">
+      <h3>{{ section.settings.footer_column5_title }}</h3>
+      {% if section.settings.show_social_icons %}
+        <ul class="footer__social-icons footer__social-icons--vertical">
+          {% if section.settings.social_facebook %}
+            <li><a href="{{ section.settings.social_facebook }}" target="_blank" rel="noopener" aria-label="Facebook">
+              <i class="fa-brands fa-facebook-f"></i><span>Facebook</span>
+            </a></li>
+          {% endif %}
+          {% if section.settings.social_instagram %}
+            <li><a href="{{ section.settings.social_instagram }}" target="_blank" rel="noopener" aria-label="Instagram">
+              <i class="fa-brands fa-instagram"></i><span>Instagram</span>
+            </a></li>
+          {% endif %}
+          {% if section.settings.social_twitter %}
+            <li><a href="{{ section.settings.social_twitter }}" target="_blank" rel="noopener" aria-label="Twitter">
+              <i class="fa-brands fa-x-twitter"></i><span>Twitter</span>
+            </a></li>
+          {% endif %}
+          {% if section.settings.social_youtube %}
+            <li><a href="{{ section.settings.social_youtube }}" target="_blank" rel="noopener" aria-label="YouTube">
+              <i class="fa-brands fa-youtube"></i><span>YouTube</span>
+            </a></li>
+          {% endif %}
+          {% if section.settings.social_pinterest %}
+            <li><a href="{{ section.settings.social_pinterest }}" target="_blank" rel="noopener" aria-label="Pinterest">
+              <i class="fa-brands fa-pinterest-p"></i><span>Pinterest</span>
+            </a></li>
+          {% endif %}
+          {% if section.settings.social_tiktok %}
+            <li><a href="{{ section.settings.social_tiktok }}" target="_blank" rel="noopener" aria-label="TikTok">
+              <i class="fa-brands fa-tiktok"></i><span>TikTok</span>
+            </a></li>
+          {% endif %}
+        </ul>
+      {% endif %}
+    </div>
+    {% endif %}
   </div>
 
   <div class="footer__bottom">
@@ -82,76 +110,38 @@
 {
   "name": "Footer",
   "settings": [
-    {
-      "type": "text",
-      "id": "footer_column1_title",
-      "label": "First column title",
-      "default": "About Us"
-    },
-    {
-      "type": "richtext",
-      "id": "footer_column1_content",
-      "label": "First column content"
-    },
-    {
-      "type": "text",
-      "id": "footer_column2_title",
-      "label": "Second column title",
-      "default": "Explore"
-    },
-    {
-      "type": "link_list",
-      "id": "footer_column2_menu",
-      "label": "Second column menu"
-    },
-    {
-      "type": "text",
-      "id": "footer_column3_title",
-      "label": "Third column title",
-      "default": "Information"
-    },
-    {
-      "type": "link_list",
-      "id": "footer_column3_menu",
-      "label": "Third column menu"
-    },
-    {
-      "type": "text",
-      "id": "footer_column4_title",
-      "label": "Fourth column title",
-      "default": "Follow Us"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_social_icons",
-      "label": "Show social icons",
-      "default": true
-    },
-    {
-      "type": "url",
-      "id": "social_facebook",
-      "label": "Facebook URL"
-    },
-    {
-      "type": "url",
-      "id": "social_instagram",
-      "label": "Instagram URL"
-    },
-    {
-      "type": "url",
-      "id": "social_twitter",
-      "label": "Twitter URL"
-    },
-    {
-      "type": "url",
-      "id": "social_youtube",
-      "label": "YouTube URL"
-    }
+    { "type": "checkbox", "id": "show_column1", "label": "Show first column", "default": true },
+    { "type": "text", "id": "footer_column1_title", "label": "First column title", "default": "About Us" },
+    { "type": "richtext", "id": "footer_column1_content", "label": "First column content" },
+
+    { "type": "checkbox", "id": "show_column2", "label": "Show second column", "default": true },
+    { "type": "text", "id": "footer_column2_title", "label": "Second column title", "default": "Explore" },
+    { "type": "link_list", "id": "footer_column2_menu", "label": "Second column menu" },
+
+    { "type": "checkbox", "id": "show_column3", "label": "Show third column", "default": true },
+    { "type": "text", "id": "footer_column3_title", "label": "Third column title", "default": "Information" },
+    { "type": "link_list", "id": "footer_column3_menu", "label": "Third column menu" },
+
+    { "type": "checkbox", "id": "show_column4", "label": "Show fourth column", "default": true },
+    { "type": "text", "id": "footer_column4_title", "label": "Fourth column title", "default": "More" },
+    { "type": "link_list", "id": "footer_column4_menu", "label": "Fourth column menu" },
+
+    { "type": "checkbox", "id": "show_column5", "label": "Show fifth column (social) ", "default": true },
+    { "type": "text", "id": "footer_column5_title", "label": "Fifth column title", "default": "Follow Us" },
+    { "type": "checkbox", "id": "show_social_icons", "label": "Show social icons", "default": true },
+
+    { "type": "color", "id": "footer_text_color", "label": "Footer text color", "default": "#333333" },
+    { "type": "color", "id": "footer_social_icon_color", "label": "Social icon color", "default": "#333333" },
+
+    { "type": "url", "id": "social_facebook", "label": "Facebook URL" },
+    { "type": "url", "id": "social_instagram", "label": "Instagram URL" },
+    { "type": "url", "id": "social_twitter", "label": "Twitter (X) URL" },
+    { "type": "url", "id": "social_youtube", "label": "YouTube URL" },
+    { "type": "url", "id": "social_pinterest", "label": "Pinterest URL" },
+    { "type": "url", "id": "social_tiktok", "label": "TikTok URL" }
   ],
   "presets": [
-    {
-      "name": "Footer"
-    }
+    { "name": "Footer" }
   ]
 }
 {% endschema %}
