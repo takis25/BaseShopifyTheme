@@ -2,6 +2,7 @@
   :root {
     --footer-text-color: {{ section.settings.footer_text_color }};
     --footer-social-icon-color: {{ section.settings.footer_social_icon_color }};
+    --footer-background-color: {{ section.settings.footer_background_color }};
   }
 </style>
 
@@ -129,7 +130,7 @@
     { "type": "checkbox", "id": "show_column5", "label": "Show fifth column (social) ", "default": true },
     { "type": "text", "id": "footer_column5_title", "label": "Fifth column title", "default": "Follow Us" },
     { "type": "checkbox", "id": "show_social_icons", "label": "Show social icons", "default": true },
-
+    { "type": "color", "id": "footer_background_color", "label": "Footer background color", "default": "#f5f5f5" },
     { "type": "color", "id": "footer_text_color", "label": "Footer text color", "default": "#333333" },
     { "type": "color", "id": "footer_social_icon_color", "label": "Social icon color", "default": "#333333" },
 
@@ -139,6 +140,7 @@
     { "type": "url", "id": "social_youtube", "label": "YouTube URL" },
     { "type": "url", "id": "social_pinterest", "label": "Pinterest URL" },
     { "type": "url", "id": "social_tiktok", "label": "TikTok URL" }
+    
   ],
   "presets": [
     { "name": "Footer" }

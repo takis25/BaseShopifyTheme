@@ -80,7 +80,7 @@ section {
 
 /* FOOTER */
 .footer {
-  background-color: #f5f5f5;
+  background-color: var(--footer-background-color, #f5f5f5);
   padding: 2rem 1rem;
   font-size: 14px;
   color: var(--footer-text-color, #333);
