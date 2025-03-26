@@ -1,148 +1,23 @@
 [
   {
-    "name": "theme_info",
-    "theme_name": "Shopify Theme Lab",
-    "theme_version": "1.0.0",
-    "theme_author": "THEME_AUTHOR",
-    "theme_documentation_url": "https://THEME_DOCUMENTATION_URL.com",
-    "theme_support_url": "https://THEME_SUPPORT_URL.com"
-  },
-  {
-    "name": "t:settings_schema.custom_settings.name",
+    "name": "Colors",
     "settings": [
       {
         "type": "color",
         "id": "color_primary",
         "label": "Primary Theme Color",
         "default": "#007aff"
-      },
-      {
-        "type": "header",
-        "content": "t:settings_schema.custom_settings.settings.header"
-      },
-      {
-        "type": "paragraph",
-        "content": "t:settings_schema.custom_settings.settings.paragraph"
       }
     ]
   },
   {
-    "name": "t:settings_schema.favicon.name",
+    "name": "Typography",
     "settings": [
       {
-        "type": "image_picker",
-        "id": "favicon",
-        "label": "t:settings_schema.favicon.settings.label",
-        "info": "t:settings_schema.favicon.settings.info"
-      }
-    ]
-  },
-  {
-    "name": "Footer",
-    "settings": [
-      {
-        "type": "text",
-        "id": "footer_column1_title",
-        "label": "First column title",
-        "default": "About Us"
-      },
-      {
-        "type": "richtext",
-        "id": "footer_column1_text",
-        "label": "First column content"
-      },
-      {
-        "type": "text",
-        "id": "footer_column2_title",
-        "label": "Second column title",
-        "default": "Explore"
-      },
-      {
-        "type": "link_list",
-        "id": "footer_column2_menu",
-        "label": "Second column menu"
-      },
-      {
-        "type": "text",
-        "id": "footer_column3_title",
-        "label": "Third column title",
-        "default": "Information"
-      },
-      {
-        "type": "link_list",
-        "id": "footer_column3_menu",
-        "label": "Third column menu"
-      },
-      {
-        "type": "text",
-        "id": "footer_column4_title",
-        "label": "Fourth column title",
-        "default": "More"
-      },
-      {
-        "type": "link_list",
-        "id": "footer_column4_menu",
-        "label": "Fourth column menu"
-      },
-      {
-        "type": "text",
-        "id": "footer_column5_title",
-        "label": "Fifth column title",
-        "default": "Follow Us"
-      },
-      {
-        "type": "checkbox",
-        "id": "show_social_icons",
-        "label": "Show social icons",
-        "default": true
-      },
-      {
-        "type": "color",
-        "id": "footer_background_color",
-        "label": "Footer background color",
-        "default": "#f5f5f5"
-      },      
-      {
-        "type": "color",
-        "id": "footer_text_color",
-        "label": "Footer text color",
-        "default": "#333333"
-      },
-      {
-        "type": "color",
-        "id": "footer_social_icon_color",
-        "label": "Social icon color",
-        "default": "#333333"
-      },
-      {
-        "type": "url",
-        "id": "social_facebook",
-        "label": "Facebook URL"
-      },
-      {
-        "type": "url",
-        "id": "social_instagram",
-        "label": "Instagram URL"
-      },
-      {
-        "type": "url",
-        "id": "social_twitter",
-        "label": "Twitter URL"
-      },
-      {
-        "type": "url",
-        "id": "social_youtube",
-        "label": "YouTube URL"
-      },
-      {
-        "type": "url",
-        "id": "social_pinterest",
-        "label": "Pinterest URL"
-      },
-      {
-        "type": "url",
-        "id": "social_tiktok",
-        "label": "TikTok URL"
+        "type": "font_picker",
+        "id": "base_font",
+        "label": "Base font",
+        "default": "roboto_n4"
       }
     ]
   }

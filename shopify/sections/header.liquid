@@ -1,23 +1,61 @@
-<header class="site-header">
+<!-- Load Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-XxLrlFZKFxAs+3UtkG8UXNPK2C77C/SLgu7j+OYYPkbZz3H4A9U2hCwq0jLIn3uyq3ReABHlZD5Y8ubWfs0fVw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<header class="site-header" style="background-color: var(--header-bg-color); color: var(--header-text-color);">
+  <style>
+    :root {
+      --header-bg-color: {{ section.settings.section_header_background_color }};
+      --header-text-color: {{ section.settings.section_header_text_color }};
+      --header-link-color: {{ section.settings.section_header_link_color }};
+    }
+    .cart-badge {
+      background: red;
+      color: white;
+      font-size: 0.65rem;
+      border-radius: 50%;
+      padding: 2px 6px;
+      position: absolute;
+      top: -5px;
+      right: -10px;
+    }
+    .icon-with-badge {
+      position: relative;
+      display: inline-block;
+    }
+  </style>
+
   <div class="header-inner">
     <a href="/" class="site-logo">
       {% if section.settings.logo != blank %}
-        <img src="{{ section.settings.logo | image_url: width: 150 }}" alt="{{ shop.name }}">
+        <img src="{{ section.settings.logo | image_url: width: section.settings.logo_width }}" alt="{{ shop.name }}">
       {% else %}
         <span>{{ shop.name }}</span>
       {% endif %}
     </a>
+
+    <button class="mobile-menu-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.site-nav ul').classList.toggle('open')">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="header-icons">
+      <a href="/search" aria-label="Search"><i class="fas fa-search"></i></a>
+      <a href="/account" aria-label="Account"><i class="fas fa-user"></i></a>
+      <a href="/pages/wishlist" aria-label="Wishlist"><i class="fas fa-heart"></i></a>
+      <a href="/cart" aria-label="Cart" class="icon-with-badge">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-badge">{{ cart.item_count }}</span>
+      </a>
+    </div>
+
     <nav class="site-nav">
       <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/collections/all">Catalog</a></li>
-        <li><a href="/pages/contact">Contact</a></li>
-        <li><a href="/cart">Cart</a></li>
+        {% for link in linklists[section.settings.menu].links %}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% endfor %}
       </ul>
     </nav>
   </div>
 </header>
-
 
 {% schema %}
 {
@@ -27,6 +65,39 @@
       "type": "image_picker",
       "id": "logo",
       "label": "Logo image"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Logo width",
+      "min": 50,
+      "max": 300,
+      "step": 5,
+      "default": 150,
+      "unit": "px"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Navigation menu"
+    },
+    {
+      "type": "color",
+      "id": "section_header_background_color",
+      "label": "Header background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "section_header_text_color",
+      "label": "Header text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "section_header_link_color",
+      "label": "Header link color",
+      "default": "#007aff"
     }
   ],
   "presets": [

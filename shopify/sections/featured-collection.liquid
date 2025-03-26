@@ -1,0 +1,181 @@
+<section class="featured-collection" style="background-color: var(--featured-collection-bg);">
+  <div class="container">
+    {% if section.settings.title != blank %}
+      <h2 class="section-title">{{ section.settings.title }}</h2>
+    {% endif %}
+
+    {% if section.settings.collection != blank %}
+      <div class="product-grid">
+        {% for product in section.settings.collection.products limit: section.settings.products_to_show %}
+          <div class="product-card">
+            <a href="{{ product.url }}" class="product-link">
+              <div class="product-image">
+                <img src="{{ product.featured_image | image_url: width: 500 }}" alt="{{ product.title }}">
+              </div>
+              <div class="product-info">
+                <h3>{{ product.title }}</h3>
+                <p class="price">{{ product.price | money }}</p>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+      {% if section.settings.button_label != blank %}
+        <div class="collection-button">
+          <a href="{{ section.settings.collection.url }}" class="btn">
+            {{ section.settings.button_label }}
+          </a>
+        </div>
+      {% endif %}
+    {% else %}
+      <p>Please select a collection.</p>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+.featured-collection {
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--featured-collection-title-color, #333);
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+.product-card {
+  background: #fff;
+  border: 1px solid #eee;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: box-shadow 0.2s ease;
+  max-width: 300px;
+  width: 100%;
+}
+
+.product-card:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.product-image img {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.product-info {
+  margin-top: 1rem;
+}
+
+.product-info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+
+.product-info .price {
+  color: #007aff;
+  font-weight: bold;
+}
+
+.collection-button {
+  margin-top: 2rem;
+}
+
+.collection-button .btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: var(--featured-collection-button-bg, #007aff);
+  color: var(--featured-collection-button-text, #ffffff);
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.collection-button .btn:hover {
+  background: #005ecf;
+}
+</style>
+
+{% schema %}
+{
+  "name": "Featured Collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+      "default": "Featured Collection"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Number of products to show",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "View all"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#f8f8f8"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Button background color",
+      "default": "#007aff"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title text color",
+      "default": "#333333"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Collection",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const root = document.documentElement;
+    root.style.setProperty('--featured-collection-bg', '{{ section.settings.background_color }}');
+    root.style.setProperty('--featured-collection-title-color', '{{ section.settings.title_color }}');
+    root.style.setProperty('--featured-collection-button-bg', '{{ section.settings.button_background }}');
+    root.style.setProperty('--featured-collection-button-text', '{{ section.settings.button_text_color }}');
+  });
+</script>

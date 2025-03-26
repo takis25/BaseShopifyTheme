@@ -1,8 +1,27 @@
 {
   "sections": {
+    "header": {
+      "type": "header"
+    },
     "hero": {
-      "type": "hero"
+      "type": "hero-section"
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "frontpage",
+        "products_to_show": 4,
+        "button_label": "Shop Now"
+      }
+    },
+    "footer": {
+      "type": "footer"
     }
   },
-  "order": ["hero"]
+  "order": [
+    "header",
+    "hero",
+    "featured",
+    "footer"
+  ]
 }
