@@ -634,3 +634,23 @@ section {
     background-position: 200px 0;
   }
 }
+
+/* Sticky 29_03 */
+.site-header.is-sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background-color: var(--header-bg-color);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+body.with-scrollbar {
+  padding-right: 17px; /* fallback for most browsers */
+}
+.site-header {
+  transition: all 0.15s ease-in-out;
+}
+
+
+

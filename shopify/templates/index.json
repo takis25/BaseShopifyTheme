@@ -1,10 +1,7 @@
 {
   "sections": {
-    "header": {
-      "type": "header"
-    },
     "hero": {
-      "type": "hero-section"
+      "type": "hero"
     },
     "featured": {
       "type": "featured-collection",
@@ -13,15 +10,10 @@
         "products_to_show": 4,
         "button_label": "Shop Now"
       }
-    },
-    "footer": {
-      "type": "footer"
     }
   },
   "order": [
-    "header",
     "hero",
-    "featured",
-    "footer"
+    "featured"
   ]
 }

@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
     <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
 
-    <!-- <link rel="preload" href="{{ 'bundle.css' | asset_url }}" as="style"> this is a comment out line-->
+    <!-- Optional: preload script if using Webpack bundle -->
     <!-- <link rel="preload" href="{{ 'bundle.js' | asset_url }}" as="script"> -->
 
     {% if settings.favicon %}
@@ -21,22 +21,24 @@
       <meta name="description" content="{{ page_description | escape }}">
     {% endif %}
 
-    {{ 'bundle.css' | asset_url | stylesheet_tag }}
-
-    <!-- Inject theme color -->
+    <!-- Theme color and scrollbar fix -->
     <style>
-  :root {
-    --color-primary: {{ settings.color_primary }};
-    --footer-text-color: {{ settings.footer_text_color }};
-    --footer-social-icon-color: {{ settings.footer_social_icon_color }};
+      :root {
+        --color-primary: {{ settings.color_primary }};
+        --footer-text-color: {{ settings.footer_text_color }};
+        --footer-social-icon-color: {{ settings.footer_social_icon_color }};
+      }
 
-     }
-</style>
+      html {
+        scrollbar-gutter: stable;
+      }
+    </style>
 
-
-    <!-- header hook for Shopify plugins -->
     {{ content_for_header }}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" ... />
+
+    <!-- ✅ FIXED: Font Awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
   </head>
 
   <body>
@@ -50,9 +52,44 @@
       {% section 'footer' %}
     </div>
 
-    <!-- webpack bundle -->
-    <script src="{{ 'bundle.js' | asset_url }}" defer="defer"></script>
     {% section 'cart-drawer' %}
+
+    <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const header = document.querySelector('.site-header');
+    const headerInner = header?.querySelector('.header-inner');
+    if (!header || !headerInner) return;
+
+    const stickyClass = 'is-sticky';
+
+    function getScrollbarWidth() {
+      return window.innerWidth - document.documentElement.clientWidth;
+    }
+
+    function updateSticky() {
+      const shouldStick = window.scrollY > 1;
+
+      if (shouldStick && !header.classList.contains(stickyClass)) {
+        header.classList.add(stickyClass);
+        headerInner.style.width = headerInner.offsetWidth + 'px';
+
+        const scrollbarWidth = getScrollbarWidth();
+        if (scrollbarWidth > 0) {
+          document.body.classList.add('with-scrollbar');
+          document.body.style.paddingRight = scrollbarWidth + 'px';
+        }
+      } else if (!shouldStick && header.classList.contains(stickyClass)) {
+        header.classList.remove(stickyClass);
+        headerInner.style.width = '';
+        document.body.classList.remove('with-scrollbar');
+        document.body.style.paddingRight = '';
+      }
+    }
+
+    updateSticky();
+    window.addEventListener('scroll', updateSticky);
+  });
+</script>
 
   </body>
 </html>
